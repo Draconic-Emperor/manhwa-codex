@@ -475,10 +475,10 @@ export default function ManhwaCodex() {
 
   const getManhwa = (id) => manhwaList.find((m) => m.id === id);
   const getCharacter = (id) => characterList.find((c) => c.id === id);
-  const charactersOf = (manhwa_id) => characterList.filter((c) => c.manhwa_id === manhwaId);
+  const charactersOf = (manhwa_id) => characterList.filter((c) => c.manhwa_id === manhwa_id);
   const insightsOf = (character_id) =>
     insightsList
-      .filter((i) => i.character_id === characterId)
+      .filter((i) => i.character_id === character_id)
       .sort(
         (a, b) =>
          new Date(b.created_at).getTime() -
