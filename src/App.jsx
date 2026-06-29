@@ -667,12 +667,14 @@ export default function ManhwaCodex() {
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
         .codex-root {
-          --bg-void: #0a0d16;
-          --bg-panel: #121a2b;
-          --cyan: #5eead4;
-          --gold: #f2c14e;
-          --text-primary: #e7ecf5;
-          --text-muted: #8c97b5;
+          --bg-void: #070712;
+          --bg-panel: #0f1020;
+
+          --purple: #a855f7;
+          --purple-glow: #c084fc;
+
+          --text-primary: #ffffff;
+          --text-muted: #9ca3af;
           font-family: 'Source Serif 4', serif;
         }
         .codex-display { font-family: 'Orbitron', sans-serif; letter-spacing: 0.02em; }
@@ -686,13 +688,21 @@ export default function ManhwaCodex() {
         }
         .codex-frame::before, .codex-frame::after {
           content: ''; position: absolute; width: 12px; height: 12px;
-          border: 2px solid var(--cyan); opacity: 0.5; pointer-events: none;
+          border: 2px solid var(--purple); opacity: 0.5; pointer-events: none;
         }
         .codex-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
         .codex-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 
         .codex-card { transition: transform 0.15s ease, border-color 0.15s ease; cursor: pointer; }
-        .codex-card:hover { transform: translateY(-2px); border-color: rgba(94,234,212,0.4); }
+        .codex-card:hover {
+ transform: translateY(-6px);
+
+ box-shadow:
+   0 0 10px rgba(168,85,247,.5),
+   0 0 25px rgba(168,85,247,.25);
+
+ border-color: #a855f7;
+}
 
         .codex-input {
           background: rgba(255,255,255,0.03);
@@ -700,13 +710,13 @@ export default function ManhwaCodex() {
           color: var(--text-primary);
           font-family: 'Source Serif 4', serif;
         }
-        .codex-input:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(94,234,212,0.18); }
+        .codex-input:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 2px rgba(94,234,212,0.18); }
         .codex-input::placeholder { color: rgba(140,151,181,0.6); }
 
         .codex-btn-primary {
           background: rgba(94,234,212,0.14);
-          border: 1px solid var(--cyan);
-          color: var(--cyan);
+          border: 1px solid var(--purple);
+          color: var(--purple);
           font-family: 'JetBrains Mono', monospace;
           transition: background 0.15s ease;
         }
@@ -728,7 +738,7 @@ export default function ManhwaCodex() {
           background: transparent;
           transition: border-color 0.15s ease, color 0.15s ease;
         }
-        .codex-iconbtn:hover { border-color: var(--cyan); color: var(--cyan); }
+        .codex-iconbtn:hover { border-color: var(--purple); color: var(--purple); }
 
         .codex-hero {
           background-image: repeating-linear-gradient(0deg, rgba(94,234,212,0.025) 0px, rgba(94,234,212,0.025) 1px, transparent 1px, transparent 3px);
@@ -741,10 +751,10 @@ export default function ManhwaCodex() {
       `}</style>
 
       {/* HEADER */}
-      <header className="sticky top-0 z-40 backdrop-blur-sm" style={{ background: "rgba(10,13,22,0.92)", borderBottom: "1px solid rgba(94,234,212,0.14)" }}>
+      <header className="sticky top-0 z-40 backdrop-blur-sm" style={{ background: "rgba(10,13,22,0.92)", borderBottom: "1px solid rgba(168,85,247,0.25)" }}>
         <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
           <button onClick={() => setView({ name: "home" })} className="flex items-center gap-2 mr-2">
-            <Sparkles size={18} style={{ color: "var(--cyan)" }} />
+            <Sparkles size={18} style={{ color: "var(--purple)" }} />
             <span className="codex-display text-base font-bold tracking-wide">CODEX</span>
             <span className="codex-mono text-[10px] hidden sm:inline" style={{ color: "var(--text-muted)" }}>OF THE WEBTOON REALMS</span>
           </button>
@@ -764,7 +774,7 @@ export default function ManhwaCodex() {
   <>
     <span
       className="codex-mono text-[10px]"
-      style={{ color: "var(--cyan)" }}
+      style={{ color: "var(--purple)" }}
     >
       {user.email}
     </span>
