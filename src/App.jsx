@@ -760,6 +760,31 @@ export default function ManhwaCodex() {
           </div>
 
           <IconBtn title="Random character" onClick={goRandom}><Dices size={15} /></IconBtn>
+{user ? (
+  <>
+    <span
+      className="codex-mono text-[10px]"
+      style={{ color: "var(--cyan)" }}
+    >
+      {user.email}
+    </span>
+
+    <button
+      onClick={signOut}
+      className="codex-btn-ghost px-3 py-2 rounded-sm text-xs"
+    >
+      Logout
+    </button>
+  </>
+) : (
+  <button
+    onClick={() => setModal({ type: "auth" })}
+    className="codex-btn-primary px-3 py-2 rounded-sm text-xs"
+  >
+    Login
+  </button>
+)}
+
           <button onClick={() => { setActionError(""); setModal({ type: "addManhwa" }); }} className="codex-btn-primary px-3 py-2 rounded-sm text-xs flex items-center gap-1.5 whitespace-nowrap">
             <Plus size={13} /> Series
           </button>
@@ -863,6 +888,49 @@ export default function ManhwaCodex() {
           <CharacterForm initial={modal.data} manhwaList={manhwaList} saving={saving} error={actionError} onCancel={() => setModal(null)} onSubmit={(data) => handleSaveCharacter(data, modal.data.id)} />
         </Modal>
       )}
+  {modal?.type === "auth" && (
+  <Modal
+    title="// SCHOLAR IDENTIFICATION"
+    onClose={() => setModal(null)}
+  >
+    <div className="flex flex-col gap-4">
+
+      <Field label="Email">
+        <input
+          className={inputClass()}
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </Field>
+
+      <Field label="Password">
+        <input
+          className={inputClass()}
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </Field>
+
+      <div className="flex gap-2 justify-end">
+        <button
+          onClick={signUp}
+          className="codex-btn-ghost px-4 py-2 rounded-sm"
+        >
+          Sign Up
+        </button>
+
+        <button
+          onClick={signIn}
+          className="codex-btn-primary px-4 py-2 rounded-sm"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </Modal>
+)}
     </div>
   );
 }
