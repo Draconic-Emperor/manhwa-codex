@@ -433,7 +433,9 @@ function InsightForm({ onSubmit, saving }) {
 export default function ManhwaCodex() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
-
+  const [user, setUser] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [manhwaList, setManhwaList] = useState([]);
   const [characterList, setCharacterList] = useState([]);
   const [insightsList, setInsightsList] = useState([]);
@@ -466,12 +468,57 @@ export default function ManhwaCodex() {
     } finally {
       setLoading(false);
     }
+
+   async function signUp() {
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert("Account created. Check your email.");
+}
+  
+  async function signIn() {
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) {
+    alert(error.message);
+  }
+}
+
+  async function signOut() {
+  await supabase.auth.signOut();
+ }
   }, []);
 
   useEffect(() => {
   loadAll();
   testSupabase();
 }, [loadAll]);
+
+  useEffect(() => {
+  supabase.auth.getSession().then(({ data }) => {
+    setUser(data.session?.user ?? null);
+  });
+
+  const {
+    data: { subscription },
+  } = supabase.auth.onAuthStateChange(
+    (_event, session) => {
+      setUser(session?.user ?? null);
+    }
+  );
+
+  return () => subscription.unsubscribe();
+}, []);
 
   const getManhwa = (id) => manhwaList.find((m) => m.id === id);
   const getCharacter = (id) => characterList.find((c) => c.id === id);
