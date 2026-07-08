@@ -172,7 +172,7 @@ function IconBtn({ children, onClick, title, active }) {
       onClick={onClick}
       title={title}
       className="codex-iconbtn flex items-center justify-center w-9 h-9 rounded-sm transition-colors"
-      style={active ? { color: "var(--cyan)", borderColor: "rgba(94,234,212,0.5)" } : undefined}
+      style={active ? { color: "var(--purple)", borderColor: "rgba(94,234,212,0.5)" } : undefined}
     >
       {children}
     </button>
@@ -268,7 +268,7 @@ function CharacterCard({ character, manhwaTitle, onClick }) {
       {manhwaTitle && (
         <p className="codex-mono text-[10px] uppercase tracking-wide" style={{ color: "var(--text-muted)" }}>{manhwaTitle}</p>
       )}
-      <p className="codex-mono text-[11px]" style={{ color: "var(--cyan)" }}>{character.role}</p>
+      <p className="codex-mono text-[11px]" style={{ color: "var(--purple)" }}>{character.role}</p>
       <p className="codex-serif text-sm leading-relaxed line-clamp-2" style={{ color: "var(--text-muted)" }}>
         {character.description}
       </p>
@@ -696,7 +696,7 @@ export default function ManhwaCodex() {
         .codex-card { transition: transform 0.15s ease, border-color 0.15s ease; cursor: pointer; }
         .codex-card:hover {
  transform: translateY(-6px);
-
+ 
  box-shadow:
    0 0 10px rgba(168,85,247,.5),
    0 0 25px rgba(168,85,247,.25);
