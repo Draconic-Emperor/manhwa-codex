@@ -895,6 +895,9 @@ export default function ManhwaCodex() {
         <p className="codex-mono text-[10px] text-center" style={{ color: "var(--text-muted)" }}>
           A shared codex — every series, character, and finding here is visible to anyone who opens this page.
         </p>
+        <p>
+          © 2026 Manhwa Codex
+        </p>
       </footer>
 
       {modal?.type === "addManhwa" && (
