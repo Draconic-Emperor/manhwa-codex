@@ -218,7 +218,7 @@ function Modal({ title, onClose, children, wide }) {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: "1px solid rgba(94,234,212,0.16)" }}>
-          <h3 className="codex-mono text-xs uppercase tracking-widest" style={{ color: "var(--cyan)" }}>{title}</h3>
+          <h3 className="codex-mono text-xs uppercase tracking-widest" style={{ color: "var(--purple)" }}>{title}</h3>
           <button onClick={onClose} className="codex-iconbtn w-8 h-8 flex items-center justify-center rounded-sm">
             <X size={15} />
           </button>
@@ -957,7 +957,7 @@ function HomeView({
   return (
     <div className="flex flex-col gap-10">
       <section className="codex-frame codex-hero codex-pulse rounded-md p-6 sm:p-8">
-        <p className="codex-mono text-[11px] uppercase tracking-widest mb-2" style={{ color: "var(--cyan)" }}>// STATUS WINDOW</p>
+        <p className="codex-mono text-[11px] uppercase tracking-widest mb-2" style={{ color: "var(--purple)" }}>// STATUS WINDOW</p>
         <h1 className="codex-display text-2xl sm:text-3xl font-bold mb-3">CODEX OF THE WEBTOON REALMS</h1>
         <p className="codex-serif text-sm sm:text-base max-w-2xl mb-5" style={{ color: "var(--text-muted)" }}>
           A living archive of manhwa series and the characters in them. Anyone can log a series, add a character,
@@ -1042,7 +1042,7 @@ function StatBlock({ label, value }) {
 function SectionHeader({ icon, title, action }) {
   return (
     <div className="flex items-center justify-between mb-4">
-      <div className="flex items-center gap-2" style={{ color: "var(--cyan)" }}>
+      <div className="flex items-center gap-2" style={{ color: "var(--purple)" }}>
         {icon}
         <h2 className="codex-mono text-xs uppercase tracking-widest">{title}</h2>
       </div>
@@ -1129,7 +1129,7 @@ function CharacterDetailView({ character, manhwa, insights, saving, onBack, onEd
           <IconBtn title="Edit character" onClick={onEdit}><Pencil size={14} /></IconBtn>
         </div>
         <div className="flex items-center gap-2 mb-4 flex-wrap">
-          <span className="codex-mono text-xs px-2 py-0.5 rounded-sm" style={{ color: "var(--cyan)", border: "1px solid rgba(94,234,212,0.3)" }}>{character.role}</span>
+          <span className="codex-mono text-xs px-2 py-0.5 rounded-sm" style={{ color: "var(--purple)", border: "1px solid rgba(94,234,212,0.3)" }}>{character.role}</span>
           {manhwa && <span className="codex-mono text-[11px]" style={{ color: "var(--text-muted)" }}>{manhwa.title}</span>}
         </div>
         <p className="codex-serif text-sm sm:text-base leading-relaxed mb-5" style={{ color: "var(--text-muted)" }}>{character.description}</p>
