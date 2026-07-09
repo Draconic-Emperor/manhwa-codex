@@ -470,34 +470,7 @@ export default function ManhwaCodex() {
       setLoading(false);
     }
 
-   async function signUp() {
-  const { error } = await supabase.auth.signUp({
-    email,
-    password,
-  });
-
-  if (error) {
-    alert(error.message);
-    return;
-  }
-
-  alert("Account created. Check your email.");
-}
-  
-  async function signIn() {
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-
-  if (error) {
-    alert(error.message);
-  }
-}
-
-  async function signOut() {
-  await supabase.auth.signOut();
- }
+   
   }, []);
 
   useEffect(() => {
@@ -532,6 +505,35 @@ export default function ManhwaCodex() {
          new Date(b.created_at).getTime() -
           new Date(a.created_at).getTime()
       );
+
+  async function signUp() {
+    const { error } = await supabase.auth.signUp({
+     email,
+     password,
+    });
+
+    if (error) {
+      alert(error.message);
+    return;
+    }
+
+    alert("Account created. Check your email.");
+  }
+  
+  async function signIn() {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      alert(error.message);
+    }
+  }
+
+  async function signOut() {
+    await supabase.auth.signOut();
+  }
 
   async function handleSaveManhwa(formData, editId) {
     setSaving(true);
