@@ -757,8 +757,24 @@ export default function ManhwaCodex() {
       <header className="sticky top-0 z-40 backdrop-blur-sm" style={{ background: "rgba(10,13,22,0.92)", borderBottom: "1px solid rgba(168,85,247,0.25)" }}>
         <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
           <button onClick={() => setView({ name: "home" })} className="flex items-center gap-2 mr-2">
-            <Sparkles size={18} style={{ color: "var(--purple)" }} />
-            <span className="codex-display text-base font-bold tracking-wide">CODEX</span>
+            <img
+              src={logo}
+              alt="Archistyn"
+              className="w-10 h-10 object-contain"
+            />
+
+            <div className="flex flex-col">
+              <span className="codex-display text-base font-bold tracking-wide">
+                CODEX
+              </span>
+
+              <span
+              className="codex-mono text-[10px]"
+              style={{ color: "var(--text-muted)" }}
+              >
+                MANHWA CODEX
+              </span>
+            </div>
             <span className="codex-mono text-[10px] hidden sm:inline" style={{ color: "var(--text-muted)" }}>OF THE WEBTOON REALMS</span>
           </button>
 
