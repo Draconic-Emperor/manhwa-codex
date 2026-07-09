@@ -1,4 +1,3 @@
-import logo from "./assets/manhwa codex-logo.png";
 import React, { useState, useEffect, useCallback } from "react";
 import { supabase } from "./supabase";
 import {
