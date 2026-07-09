@@ -95,6 +95,24 @@ p {
   margin: 0;
 }
 
+.hero-banner{
+ height:400px;
+
+ background:
+ linear-gradient(
+ rgba(7,7,18,.5),
+ rgba(7,7,18,.9)
+ ),
+ url('/hero.jpg');
+
+ background-size:cover;
+ background-position:center;
+
+ border-radius:20px;
+
+ overflow:hidden;
+}
+
 code,
 .counter {
   font-family: var(--mono);

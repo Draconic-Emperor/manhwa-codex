@@ -1,3 +1,4 @@
+import logo from "./assets/manhwa codex-logo.png";
 import React, { useState, useEffect, useCallback } from "react";
 import { supabase } from "./supabase";
 import {
@@ -684,7 +685,7 @@ export default function ManhwaCodex() {
         .codex-frame {
           position: relative;
           background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0) 40%), var(--bg-panel);
-          border: 1px solid rgba(94,234,212,0.14);
+          border: 1px solid rgba(168,85,247,0.25);
         }
         .codex-frame::before, .codex-frame::after {
           content: ''; position: absolute; width: 12px; height: 12px;
@@ -695,14 +696,14 @@ export default function ManhwaCodex() {
 
         .codex-card { transition: transform 0.15s ease, border-color 0.15s ease; cursor: pointer; }
         .codex-card:hover {
- transform: translateY(-6px);
+          transform: translateY(-6px);
  
- box-shadow:
-   0 0 10px rgba(168,85,247,.5),
-   0 0 25px rgba(168,85,247,.25);
+          box-shadow:
+          0 0 10px rgba(168,85,247,.5),
+          0 0 25px rgba(168,85,247,.25);
 
- border-color: #a855f7;
-}
+          border-color: #a855f7;
+        }
 
         .codex-input {
           background: rgba(255,255,255,0.03);
@@ -958,12 +959,24 @@ function HomeView({
     <div className="flex flex-col gap-10">
       <section className="codex-frame codex-hero codex-pulse rounded-md p-6 sm:p-8">
         <p className="codex-mono text-[11px] uppercase tracking-widest mb-2" style={{ color: "var(--purple)" }}>// STATUS WINDOW</p>
-        <h1 className="codex-display text-2xl sm:text-3xl font-bold mb-3">CODEX OF THE WEBTOON REALMS</h1>
+        <h1 className="codex-display text-2xl sm:text-3xl font-bold mb-3"> MANHWA CODEX </h1>
         <p className="codex-serif text-sm sm:text-base max-w-2xl mb-5" style={{ color: "var(--text-muted)" }}>
-          A living archive of manhwa series and the characters in them. Anyone can log a series, add a character,
-          or leave a finding — a theory, a piece of confirmed lore, an analysis, or a question for other readers.
+          A living archive of manhwa series and the characters in them.Discover, Track and Explore
+          the greatest manhwa ever created.
         </p>
         <div className="flex flex-wrap gap-4">
+          <div className="hero-banner">
+            <div>
+              <h1>Solo Leveling</h1>
+                <p>
+                  The weakest hunter became humanity's strongest weapon.
+                </p>
+
+                <button>
+                  Read Now
+                </button>
+            </div>
+          </div>
           <StatBlock label="Series logged" value={manhwaList.length} />
           <StatBlock label="Characters logged" value={characterCount} />
           <StatBlock label="Findings recorded" value={insightCount} />
