@@ -757,7 +757,7 @@ export default function ManhwaCodex() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
           <button onClick={() => setView({ name: "home" })} className="flex items-center gap-2 mr-2">
             <img
-              src={logo}
+              src={manhwa-logo}
               alt="Archistyn"
               className="w-10 h-10 object-contain"
             />
