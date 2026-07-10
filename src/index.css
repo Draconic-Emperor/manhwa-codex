@@ -52,6 +52,7 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 #root {
@@ -95,22 +96,25 @@ p {
   margin: 0;
 }
 
-.hero-banner{
- height:400px;
+.hero-banner {
+  height: 400px;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.15),
+    rgba(59, 130, 246, 0.1)
+  ),
+  url('/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
- background:
- linear-gradient(
- rgba(7,7,18,.5),
- rgba(7,7,18,.9)
- ),
- url('/hero.jpg');
-
- background-size:cover;
- background-position:center;
-
- border-radius:20px;
-
- overflow:hidden;
+.hero-banner:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(168, 85, 247, 0.3);
 }
 
 code,
@@ -126,4 +130,14 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+/* Smooth transitions globally */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Remove transition from scroll and pointer events */
+html {
+  scroll-behavior: smooth;
 }
