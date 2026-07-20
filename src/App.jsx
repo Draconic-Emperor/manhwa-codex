@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from './supabase';
 import { Search, Home, BookOpen, Users, Lightbulb, Clock, Trophy, BookmarkIcon, HelpCircle, LogOut, LogIn, Plus, ChevronRight, Shuffle } from 'lucide-react';
+import './index.css'
 
 // Constants
 const RANKS = [
