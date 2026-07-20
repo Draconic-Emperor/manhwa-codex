@@ -695,25 +695,27 @@ export default function ManhwaCodex() {
           <button className={`nav-item ${view === 'home' ? 'active' : ''}`} onClick={() => setView('home')}>
             <Home size={20} /> HOME
           </button>
-          <button className="nav-item">
+          <button className={`nav-item ${view === 'series' ? 'active' : ''}`}
+             onClick={() => setView('series')}
+          >
             <BookOpen size={20} /> SERIES
           </button>
-          <button className="nav-item">
+          <button className={`nav-item ${view == 'characters' ? 'active' : ''}`} onClick={() => setView('characters')}>
             <Users size={20} /> CHARACTERS
           </button>
-          <button className="nav-item">
+          <button className={`nav-item ${view == 'insights' ? 'active' : ''}`} onClick={() => setView('insights')}>
             <Lightbulb size={20} /> INSIGHTS
           </button>
           <button className="nav-item">
             <Clock size={20} /> TIMELINE <span className="badge">soon</span>
           </button>
-          <button className="nav-item">
+          <button className={`nav-item ${view == 'rankings' ? 'active' : ''}`} onClick={() => setView('rankings')}>
             <Trophy size={20} /> RANKINGS <span className="badge">soon</span>
           </button>
-          <button className="nav-item">
+          <button className={`nav-item ${view == 'collections' ? 'active' : ''}`} onClick={() => setView('collections')}>
             <BookmarkIcon size={20} /> COLLECTIONS <span className="badge">soon</span>
           </button>
-          <button className="nav-item">
+          <button className={`nav-item $view == 'about codex' ? 'active' : ''}`} onClick={() => setView('about codex')}>
             <HelpCircle size={20} /> ABOUT CODEX
           </button>
         </nav>
@@ -756,6 +758,139 @@ export default function ManhwaCodex() {
           />
         )}
 
+        {view === 'characters' && (
+  <div className="view-container">
+
+    <SectionHeader
+      icon={Users}
+      title="ALL CHARACTERS"
+    />
+
+       <div className="cards-grid">
+          {characterList.map((character) => (
+          <CharacterCard
+            key={character.id}
+            character={character}
+            manhwaTitle={
+              getManhwa(character.manhwa_id)?.title
+          }
+          onClick={() => {
+            setSelectedCharacterId(character.id)
+            setView('character')
+              }}
+              />
+            ))}
+          </div>
+
+            </div>
+        )}
+
+        {view === 'insights' && (
+  <div className="view-container">
+
+    <SectionHeader
+      icon={Lightbulb}
+      title="COMMUNITY INSIGHTS"
+    />
+
+    <div className="insights-list">
+      {insightList.map((insight) => (
+        <div key={insight.id} className="insight-item">
+          <InsightTypeTag type={insight.type} />
+          <p>{insight.content}</p>
+          <small>
+            {formatDate(insight.created_at)}
+          </small>
+        </div>
+      ))}
+    </div>
+
+  </div>
+)}
+
+
+        {view === 'rankings' && (
+  <div className="view-container">
+
+    <SectionHeader
+      icon={Trophy}
+      title="CHARACTER RANKINGS"
+    />
+
+    {characterList
+      .sort((a,b) => {
+        const order = {
+          unparalleled:6,
+          apex:5,
+          severe:4,
+          high:3,
+          moderate:2,
+          unranked:1
+        }
+
+        return order[b.rank] - order[a.rank]
+      })
+      .map((c,index) => (
+        <div
+          key={c.id}
+          className="insight-item"
+        >
+          <h3>
+            #{index+1} {c.name}
+          </h3>
+
+          <p>{c.role}</p>
+        </div>
+      ))}
+
+  </div>
+)}
+
+        {view === 'collections' && (
+  <div className="view-container">
+
+    <SectionHeader
+      icon={BookmarkIcon}
+      title="COLLECTIONS"
+    />
+
+    <EmptyState
+      icon={BookmarkIcon}
+      title="Collections Coming Soon"
+      subtitle="Save your favourite series here."
+    />
+
+  </div>
+)}
+
+        {view === 'about' && (
+  <div className="view-container">
+
+    <SectionHeader
+      icon={HelpCircle}
+      title="ABOUT MANHWA CODEX"
+    />
+
+    <div className="detail-description">
+
+      <h2>Manhwa Codex</h2>
+
+      <p>
+        A community-driven archive for
+        manhwa, characters, lore,
+        rankings and theories.
+      </p>
+
+      <p>
+        Built using React and Supabase.
+      </p>
+
+        </div>
+
+        </div>
+        )}
+
+        
         {view === 'manhwa' && selectedManhwa && (
           <ManhwaDetailView
             manhwa={selectedManhwa}
@@ -768,6 +903,29 @@ export default function ManhwaCodex() {
             onEdit={() => setEditingManhwa(selectedManhwa)}
             onAddCharacter={() => setShowCharacterForm(true)}
           />
+
+         {view === 'series' && (
+            <div className="view-container">
+            <SectionHeader
+              icon={BookOpen}
+              title="ALL SERIES"
+            />
+
+            <div className="cards-grid">
+              {manhwaList.map((m) => (
+                <ManhwaCard
+                key={m.id}
+                manhwa={m}
+                characterCount={charactersOf(m.id).length}
+                onClick={() => {
+                setSelectedManhwaId(m.id);
+                setView('manhwa');
+                }}
+              />
+              ))}
+                </div>
+             </div>
+           )}
         )}
 
         {view === 'character' && selectedCharacter && (
