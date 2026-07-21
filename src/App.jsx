@@ -903,7 +903,7 @@ export default function ManhwaCodex() {
             onEdit={() => setEditingManhwa(selectedManhwa)}
             onAddCharacter={() => setShowCharacterForm(true)}
           />
-
+        )}
          {view === 'series' && (
             <div className="view-container">
             <SectionHeader
@@ -926,7 +926,7 @@ export default function ManhwaCodex() {
                 </div>
              </div>
            )}
-        )}
+        
 
         {view === 'character' && selectedCharacter && (
           <CharacterDetailView
